@@ -15,10 +15,11 @@ use App\Http\Controllers\authController;
 */
 
 Route::get('/', [authController::class, 'index'])->name('login');
-Route::post('/logmein', [authController::class, 'logmein'])->name('logmein');
 Route::get('/signup', [authController::class, 'signup'])->name('signup');
 Route::get('/home', [authController::class, 'home'])->name('home');
+
 Route::post('/register', [authController::class, 'register'])->name('register');
+Route::post('/logmein', [authController::class, 'logmein'])->name('logmein');
 
 
 

@@ -10,41 +10,46 @@ use Illuminate\Support\Facades\Hash;
 
 class authController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('login');
     }
 
-    public function logmein(Request $request){
+    public function logmein(Request $request)
+    {
         $validated = $request->validate([
             'email' => 'required|min:2',
-            'password' => 'required'
+            'password' => 'required|min:4'
         ]);
-        
+
         $query = DB::table('users')->where('email', $request->email);
 
-        if($query->exists()){
-            
+        if ($query->exists()) {
+
 
             if (Hash::check($request->password, $query->first()->password)) {
                 return "matched";
-            }else{
+            } else {
                 return "not matched";
             }
         }
     }
 
-    public function signup(){
+    public function signup()
+    {
         return view('signup');
     }
 
-    public function home(){
+    public function home()
+    {
         return "welcome to home";
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         $validated = $request->validate([
-            'fname' => 'required|min:2',
-            'lname' => 'required|min:2',
+            'fname' => 'string|required|min:2',
+            'lname' => 'string|required|min:2',
             'email' => 'required|unique:users|max:255',
             'password' => 'required|confirmed'
         ]);
@@ -55,11 +60,10 @@ class authController extends Controller
             'lname' => $request->lname,
             'email' => $request->email,
             'password' => Hash::make($request->password)
-
         ]);
 
-        if($insertToTheDB){
-            return redirect()->route('signup');
+        if ($insertToTheDB) {
+            return redirect()->route('login');
         }
     }
 }
