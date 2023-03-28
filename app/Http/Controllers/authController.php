@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -15,22 +16,23 @@ class authController extends Controller
         return view('login');
     }
 
-    public function logmein(Request $request)
+    public function signIn(Request $request)
     {
         $validated = $request->validate([
             'email' => 'required|min:2',
             'password' => 'required|min:4'
         ]);
 
-        $query = DB::table('users')->where('email', $request->email);
+        $query = User::where('email', "=",  $request->email)->first();
 
-        if ($query->exists()) {
-
-
+        if (!$query) {
+            return back()->with('fail', 'We do not recognize your email address');
+        } else {
             if (Hash::check($request->password, $query->first()->password)) {
-                return "matched";
+                $request->session()->put('LoggedUser', $query);
+                return redirect('home');
             } else {
-                return "not matched";
+                return back()->with('fail', 'Incorrect password');
             }
         }
     }
@@ -38,11 +40,6 @@ class authController extends Controller
     public function signup()
     {
         return view('signup');
-    }
-
-    public function home()
-    {
-        return "welcome to home";
     }
 
     public function register(Request $request)
@@ -63,7 +60,9 @@ class authController extends Controller
         ]);
 
         if ($insertToTheDB) {
-            return redirect()->route('login');
+            return back()->with('success', 'You have been registered successfully');
+        } else {
+            return back()->with('fail', 'Something went wrong, try again later');
         }
     }
 }

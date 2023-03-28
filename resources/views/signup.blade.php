@@ -31,6 +31,16 @@
                   </div>
                   @endif
                   <form method="POST" action="{{ route('register') }}">
+                    @if (Session::has('success'))
+                    <div class="alert alert-success">
+                      {{ Session::get('success') }}
+                    </div>
+                    @endif
+                    @if (Session::has('fail'))
+                    <div class="alert alert-danger">
+                      {{ Session::get('fail') }}
+                    </div>
+                    @endif
                     @csrf
                     <div class="d-flex align-items-center mb-2 pb-1">
                       <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
