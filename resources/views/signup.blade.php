@@ -28,6 +28,16 @@
                     </ul>
                 </div>
                 @endif
+                @if (Session::has('success'))
+                <div class="success">
+                    {{ Session::get('success') }}
+                </div>
+                @endif
+                @if (Session::has('fail'))
+                <div class="failed">
+                    {{ Session::get('fail') }}
+                </div>
+                @endif
                 <header>
                     <h2 class="animation a1">Sign up</h2>
                     <h4 class="animation a2">
@@ -35,17 +45,6 @@
                     </h4>
                 </header>
                 <form method="POST" action="{{ route('register') }}">
-
-                    @if (Session::has('success'))
-                    <div class="alert alert-success">
-                        {{ Session::get('success') }}
-                    </div>
-                    @endif
-                    @if (Session::has('fail'))
-                    <div class="alert alert-danger">
-                        {{ Session::get('fail') }}
-                    </div>
-                    @endif
                     @csrf
                     <input type="text" id="email" name="fname" placeholder="First Name" class="input-field animation a3" />
                     <input type="text" id="mname" name="mname" placeholder="Middle Name" class="input-field animation a3" />
