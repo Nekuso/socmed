@@ -47,9 +47,9 @@
                     </div>
                     @endif
                     @csrf
-                    <input type="email" id="email" name="fname" placeholder="First Name" class="input-field animation a3" />
-                    <input type="email" id="mname" name="mname" placeholder="Middle Name" class="input-field animation a3" />
-                    <input type="email" id="lname" name="lname" placeholder="Last Name" class="input-field animation a3" />
+                    <input type="text" id="email" name="fname" placeholder="First Name" class="input-field animation a3" />
+                    <input type="text" id="mname" name="mname" placeholder="Middle Name" class="input-field animation a3" />
+                    <input type="text" id="lname" name="lname" placeholder="Last Name" class="input-field animation a3" />
                     <input type="email" id="email" name="email" placeholder="Email" class="input-field animation a3" />
                     <input type="password" id="password" name="password" placeholder="Password" class="input-field animation a4" />
                     <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Verify Password" class="input-field animation a4" />
