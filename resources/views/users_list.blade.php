@@ -29,7 +29,7 @@
                         <td>{{$user->email}}</td>
                         <td>
                             <a href="{{route('userView', $user->id)}}" class="btn btn-primary" style="font-size: .6rem;">Update</a>
-                            <a href="{{url('/delete/'.$user->id)}}" class="btn btn-danger deleteBtn" onclick="return confirm('Are you sure you want to delete this')" style="font-size: .6rem;">Delete</a>
+                            <button class="btn btn-danger delete-button" onclick="handleDelete('{{$user->id}}')" style="font-size: .6rem;">Delete</button>
                         </td>
                     </tr>
                     @endforeach
@@ -38,34 +38,4 @@
         </div>
     </div>
 
-    <!-- <div class=" card" style="width: 18rem;">
-                                <img src="https://i.pinimg.com/originals/e1/60/60/e16060d20c3c32f0946f4cf5469a5266.gif" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold" style="font-size: .6rem;">Grannys Noodle Shop</h5>
-                                    <p class="card-text" style="font-size: .6rem;">
-                                        Grannys Noodle Shop is a restaurant located in the heart of the city. We serve a variety of dishes, including noodles, rice, and more.
-                                    </p>
-                                    <a href="#" class="btn btn-primary" style="font-size: .6rem;">OPEN</a>
-                                </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://i.pinimg.com/originals/e1/60/60/e16060d20c3c32f0946f4cf5469a5266.gif" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title fw-bold" style="font-size: .6rem;">Grannys Noodle Shop</h5>
-                <p class="card-text" style="font-size: .6rem;">
-                    Grannys Noodle Shop is a restaurant located in the heart of the city. We serve a variety of dishes, including noodles, rice, and more.
-                </p>
-                <a href="#" class="btn btn-primary" style="font-size: .6rem;">OPEN</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://i.pinimg.com/originals/e1/60/60/e16060d20c3c32f0946f4cf5469a5266.gif" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title fw-bold" style="font-size: .6rem;">Grannys Noodle Shop</h5>
-                <p class="card-text" style="font-size: .6rem;">
-                    Grannys Noodle Shop is a restaurant located in the heart of the city. We serve a variety of dishes, including noodles, rice, and more.
-                </p>
-                <a href="#" class="btn btn-primary" style="font-size: .6rem;">OPEN</a>
-            </div>
-        </div> -->
 </div>

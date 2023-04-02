@@ -29,12 +29,12 @@
                 </div>
                 @endif
                 @if (Session::has('success'))
-                <div class="alert alert-success">
+                <div class="success alert alert-success" style="font-size: .7rem;">
                     {{ Session::get('success') }}
                 </div>
                 @endif
                 @if (Session::has('fail'))
-                <div class="alert alert-danger">
+                <div class="failed alert alert-danger" style="font-size: .7rem;">
                     {{ Session::get('fail') }}
                 </div>
                 @endif
