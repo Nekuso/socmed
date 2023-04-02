@@ -25,5 +25,5 @@ Route::group(['middleware' => ['Authcheck']], function () {
     Route::get('/logout', [homeController::class, 'logout'])->name('logout');
     Route::get('/update_user_view/{id}', [homeController::class, 'updateView'])->name('userView');
     Route::match(array('GET', 'POST'), '/update_user/{id}', [homeController::class, 'updateUser'])->name('updateUser');
-    Route::post('/delete/{id}', [homeController::class, 'delete'])->name('delete');
+    Route::get('/delete/{id}', [homeController::class, 'delete']);
 });

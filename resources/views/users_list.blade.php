@@ -4,10 +4,10 @@
 
 <div class="container d-flex justify-content-center flex-wrap" style="margin-top: 6rem; gap: 1rem;">
     <div class="title" style="width: 100%; display: flex;">
-        <h2 class="text-left" style="font-size: .8rem; background-color: black; color: white; border-radius: 10px; padding: .7rem; width: auto;">Users List</h2>
+        <h2 class="text-left" style="font-size: .8rem; background-color: black; color: white; border-radius: 10px; padding: .6rem .7rem; width: auto;">Users List</h2>
     </div>
     <div class="container text-center ">
-        <div class="table-responsive ">
+        <div class="table-responsive">
             <table class="table table-bordered table-striped text-center ">
                 <thead>
                     <tr style="font-size: .6rem;">
@@ -29,7 +29,7 @@
                         <td>{{$user->email}}</td>
                         <td>
                             <a href="{{route('userView', $user->id)}}" class="btn btn-primary" style="font-size: .6rem;">Update</a>
-                            <button class="btn btn-danger deleteBtn" style="font-size: .6rem;" onclick="handleDelete('{{$user->id}}')">Delete</button>
+                            <a href="{{url('/delete/'.$user->id)}}" class="btn btn-danger deleteBtn" onclick="return confirm('Are you sure you want to delete this')" style="font-size: .6rem;">Delete</a>
                         </td>
                     </tr>
                     @endforeach

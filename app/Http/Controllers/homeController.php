@@ -50,9 +50,9 @@ class homeController extends Controller
     {
         $delete = User::where('id', '=', $id)->delete();
         if ($delete) {
-            return response()->json(['status' => 1, 'msg' => 'User deleted successfully']);
+            return back()->with('success', 'User deleted successfully');
         } else {
-            return response()->json(['status' => 2, 'msg' => 'Something went wrong, please try again']);
+            return back()->with('fail', 'Something went wrong, please try again');
         }
     }
 }
