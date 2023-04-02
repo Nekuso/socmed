@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class homeController extends Controller
 {
@@ -35,13 +36,23 @@ class homeController extends Controller
             'mname' => $request->mname,
             'lname' => $request->lname,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => Hash::make($request->password)
         ]);
 
         if ($updated) {
-            return response()->json(["status" => 1, 'msg' => 'User updated successfully']);
+            return back()->with('success', 'User updated successfully');
         } else {
-            return response()->json(["status" => 1, 'msg' => 'User not updated']);
+            return back()->with('fail', 'Something went wrong, please try again');
+        }
+    }
+
+    public function delete($id)
+    {
+        $delete = User::where('id', '=', $id)->delete();
+        if ($delete) {
+            return response()->json(['status' => 1, 'msg' => 'User deleted successfully']);
+        } else {
+            return response()->json(['status' => 2, 'msg' => 'Something went wrong, please try again']);
         }
     }
 }

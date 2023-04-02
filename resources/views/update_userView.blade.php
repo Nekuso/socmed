@@ -14,12 +14,12 @@
             </div>
             @endif
             @if (Session::has('success'))
-            <div class="success">
+            <div class="success alert alert-success" style="font-size: .7rem;">
                 {{ Session::get('success') }}
             </div>
             @endif
             @if (Session::has('fail'))
-            <div class="failed">
+            <div class="failed alert alert-danger" style="font-size: .7rem;">
                 {{ Session::get('fail') }}
             </div>
             @endif
@@ -29,6 +29,7 @@
                 </div>
                 <div class="card-body">
                     <form method="POST" id="formSubmit" action="{{ route('updateUser', $user_info->id) }}">
+
                         @csrf
                         <div class="form-group mb-3">
                             <label style="font-size: .7rem; font-weight:800;" for="fname">First Name</label>

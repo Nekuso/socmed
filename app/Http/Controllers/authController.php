@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 
-class authController extends Controller
+class AuthController extends Controller
 {
     public function index()
     {
@@ -23,13 +23,13 @@ class authController extends Controller
             'password' => 'required|min:4'
         ]);
 
-        $query = User::where('email', "=",  $request->email)->first();
+        $query = User::where('email', "=", $request->email)->first();
 
         if (!$query) {
             return back()->with('fail', 'We do not recognize your email address');
         } else {
-            if (Hash::check($request->password, $query->first()->password)) {
-                $request->session()->put('LoggedUser', $query);
+            if (Hash::check($request->password, $query->password)) {
+                $request->session()->put('LoggedUser', $query->id);
                 return redirect('home');
             } else {
                 return back()->with('fail', 'Incorrect password');
@@ -47,7 +47,7 @@ class authController extends Controller
         $validated = $request->validate([
             'fname' => 'string|required|min:2',
             'lname' => 'string|required|min:2',
-            'email' => 'required|unique:users|max:255',
+            'email' => 'required|unique:users|email',
             'password' => 'required|confirmed'
         ]);
 
