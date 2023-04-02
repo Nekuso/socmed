@@ -30,19 +30,18 @@ class homeController extends Controller
 
     public function updateUser($id, Request $request)
     {
-        $updated = User::where('id','=', $id)->update([
-            'fname' => $request->input('fname'),
-            'mname' => $request->input('mname'),
-            'lname' => $request->input('lname'),
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
+        $updated = User::where('id', '=', $id)->update([
+            'fname' => $request->fname,
+            'mname' => $request->mname,
+            'lname' => $request->lname,
+            'email' => $request->email,
+            'password' => $request->password,
         ]);
 
         if ($updated) {
-            return back()->with('success', 'User has been updated');
+            return response()->json(["status" => 1, 'msg' => 'User updated successfully']);
         } else {
-            return back()->with('fail', 'Something went wrong, try again later');
+            return response()->json(["status" => 1, 'msg' => 'User not updated']);
         }
-
     }
 }

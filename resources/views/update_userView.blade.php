@@ -28,7 +28,7 @@
                     <h4 style="font-size: .7rem;">Update User</h4>
                 </div>
                 <div class="card-body">
-                    <form action="POST" id="formSubmit" action="{{route('updateUser', $user_info->id)}}">
+                    <form method="POST" id="formSubmit" action="{{ route('updateUser', $user_info->id) }}">
                         @csrf
                         <div class="form-group mb-3">
                             <label style="font-size: .7rem; font-weight:800;" for="fname">First Name</label>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="form-group">
                             <label style="font-size: .7rem; font-weight:800;" for="password_confirmation">Verify Password</label>
-                            <input style="font-size: .6rem;" type="password" id="password_confirmation" name="password_confirmation" placeholder="Verify Password" class="form-control form-control-sm" value="{{ $user_info->password_confirmation }}">
+                            <input style="font-size: .6rem;" type="password" id="password_confirmation" name="password_confirmation" placeholder="Verify Password" class="form-control form-control-sm">
                         </div>
                         <div class="footer" style="display: flex; justify-content: space-around;">
                             <button type="submit" class="btn btn-primary btn-sm mt-3">Update</button>
