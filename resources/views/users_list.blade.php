@@ -11,6 +11,7 @@
             <table class="table table-bordered table-striped text-center">
                 <thead>
                     <tr style="font-size: .6rem;">
+                        <th>ID</th>
                         <th>First Name</th>
                         <th>Middle Name</th>
                         <th>Last Name</th>
@@ -19,40 +20,25 @@
                     </tr>
                 </thead>
                 <tbody style="font-size: .6rem;">
+                    @foreach($user_list as $user)
                     <tr>
-                        <td>Ezzer</td>
-                        <td>Dave</td>
-                        <td>Camal</td>
-                        <td>ezzer@cornhub.com</td>
-                        <td><button class="btn btn-primary" style="font-size: .6rem;">Edit</button> <button class="btn btn-danger" style="font-size: .6rem;">Delete</button></td>
+                        <td>{{$user->id}}</td>
+                        <td>{{$user->fname}}</td>
+                        <td>{{$user->mname}}</td>
+                        <td>{{$user->lname}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>
+                            <a href="{{route('userView', $user->id)}}" class="btn btn-primary" style="font-size: .6rem;">Update</a>
+                            <button href="#" class="btn btn-danger" style="font-size: .6rem;">Delete</button>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>Ezzer</td>
-                        <td>Dave</td>
-                        <td>Camal</td>
-                        <td>ezzer@cornhub.com</td>
-                        <td><button class="btn btn-primary" style="font-size: .6rem;">Edit</button> <button class="btn btn-danger" style="font-size: .6rem;">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>Ezzer</td>
-                        <td>Dave</td>
-                        <td>Camal</td>
-                        <td>ezzer@cornhub.com</td>
-                        <td><button class="btn btn-primary" style="font-size: .6rem;">Edit</button> <button class="btn btn-danger" style="font-size: .6rem;">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>Ezzer</td>
-                        <td>Dave</td>
-                        <td>Camal</td>
-                        <td>ezzer@cornhub.com</td>
-                        <td><button class="btn btn-primary" style="font-size: .6rem;">Edit</button> <button class="btn btn-danger" style="font-size: .6rem;">Delete</button></td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 
-    <div class="card" style="width: 18rem;">
+    <!-- <div class="card" style="width: 18rem;">
         <img src="https://i.pinimg.com/originals/e1/60/60/e16060d20c3c32f0946f4cf5469a5266.gif" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title fw-bold" style="font-size: .6rem;">Grannys Noodle Shop</h5>
@@ -81,5 +67,5 @@
             </p>
             <a href="#" class="btn btn-primary" style="font-size: .6rem;">OPEN</a>
         </div>
-    </div>
+    </div> -->
 </div>

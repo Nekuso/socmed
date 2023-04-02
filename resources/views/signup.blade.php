@@ -46,12 +46,12 @@
                 </header>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-                    <input type="text" id="email" name="fname" placeholder="First Name" class="input-field animation a3" />
-                    <input type="text" id="mname" name="mname" placeholder="Middle Name" class="input-field animation a3" />
-                    <input type="text" id="lname" name="lname" placeholder="Last Name" class="input-field animation a3" />
-                    <input type="email" id="email" name="email" placeholder="Email" class="input-field animation a3" />
-                    <input type="password" id="password" name="password" placeholder="Password" class="input-field animation a4" />
-                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Verify Password" class="input-field animation a4" />
+                    <input type="text" id="email" name="fname" placeholder="First Name" class="input-field animation a3" value="{{old('fname')}}" />
+                    <input type="text" id="mname" name="mname" placeholder="Middle Name" class="input-field animation a3" value="{{old('mname')}}" />
+                    <input type="text" id="lname" name="lname" placeholder="Last Name" class="input-field animation a3" value="{{old('lname')}}" />
+                    <input type="email" id="email" name="email" placeholder="Email" class="input-field animation a3" value="{{old('email')}}" />
+                    <input type="password" id="password" name="password" placeholder="Password" class="input-field animation a4" value="{{old('password')}}" />
+                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Verify Password" class="input-field animation a4" value="{{old('password_confirmation')}}" />
                     <p class="animation a5">Already have an account?<a href="{{ route('login') }}">Login</a></p>
                     <button class="animation a6" type="submit">Register</button>
                 </form>
