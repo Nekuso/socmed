@@ -18,8 +18,9 @@
             <div class="card">
                 <div class="card-body">
                     <form>
+                        @csrf
                         <div class="form-group mb-3">
-                            <textarea class="form-control p-3" rows="3" placeholder="What's on your mind?" style="font-size: .7rem; min-height: 120px; max-height: 120px;"></textarea>
+                            <textarea name="post" class="form-control p-3" rows="3" placeholder="What's on your mind?" style="font-size: .7rem; min-height: 120px; max-height: 120px;"></textarea>
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary w-auto" style="font-size: .7rem;">Post</button>
