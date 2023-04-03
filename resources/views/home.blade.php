@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container-fluid mt-5 pt-4 pb-4">
+<div class="container-fluid mt-5 pt-4 pb-4" style="width: 90%;">
     <div class="row justify-content-center">
         <div class="col-md-2 d-none d-md-block"> <!-- Profile Sidebar -->
             <div class="card">
