@@ -3,7 +3,7 @@
 
 <div class="container-fluid mt-5 pt-4 pb-4" style="width: 90%;">
     <div class="row justify-content-center">
-        <div class="col-md-2 d-none d-md-block"> <!-- Profile Sidebar -->
+        <div class="col-md-3 d-none d-md-block"> <!-- Profile Sidebar -->
             <div class="card">
                 <div class="card-body d-flex flex-column gap-3">
                     <div class="d-flex align-items-center" style="align-items: center; gap: .5rem;"> <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/c2/1e/5b/c21e5b0f13b015143dac6a18e8ddd899.jpg" alt="Profile Image" width="30">
@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-5 col-sm-12">
             <!-- Post Input -->
             <div class="card">
                 <div class="card-body">
@@ -47,14 +47,15 @@
                                         </div>
                                     </div>
 
+                                    @if($post->user == $current_user->id)
                                     <div class="dropdown">
                                         <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><button class="dropdown-item" onclick="handleDeletePost('{{$post->id}}')">Delete</button></li>
+                                            <li><button class="dropdown-item" onclick="handleDeletePost('{{$post->id}}')">DELETE</button></li>
                                         </ul>
                                     </div>
-
+                                    @endif
                                 </div>
                                 <div class="media-body">
                                     <p class="" style="font-size: .6rem; margin-bottom: 0;">
