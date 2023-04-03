@@ -1,41 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
+@section('content')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    @vite('resources/css/app.css')
-</head>
+<div class="container-fluid mt-5 pt-4 pb-4" style="max-width: 90%;">
+    <div class="row gap-2 justify-content-center">
+        <div class="col-sm-2 d-none d-md-block">
+            <!-- Profile Sidebar -->
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style="font-size: 1rem;">Profile</h4>
+                    <p class="card-text" style="font-size: .6rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus massa ut lorem bibendum, ac pharetra nibh ultricies. Duis quis ante lectus.</p>
+                </div>
+            </div>
 
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">CornHub</a>
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link mx-2" href="#!"><i class="fas fa-plus-circle pe-2"></i>Post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-2" href="#!"><i class="fas fa-bell pe-2"></i>Alerts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-2" href="#!"><i class="fas fa-heart pe-2"></i>Trips</a>
-                    </li>
-                    <li class="nav-item ms-3">
-                        <a class="btn btn-black btn-rounded" href="{{route('logout')}}">Sign out</a>
-                    </li>
+        </div>
+        <div class="col-sm-6">
+            <!-- Post Input -->
+            <div class="card">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group mb-3">
+                            <textarea class="form-control" rows="3" placeholder="What's on your mind?" style="font-size: .7rem; min-height: 120px; max-height: 120px;"></textarea>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary w-auto" style="font-size: .7rem;">Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Posts -->
+            <div class="card mt-3">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <h4 class="card-title mb-3 bg-dark rounded-5 text-white" style="padding: .5rem 1rem; font-size: .8rem;">Posts</h4>
+                    </div>
+                    <div class="card p-4 bg-light">
+                        <div class="media d-flex flex-column gap-4">
+                            <div class="d-flex align-items-center gap-2">
+                                <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/c2/1e/5b/c21e5b0f13b015143dac6a18e8ddd899.jpg" alt="Profile Image" width="50">
+                                <h5 class="mt-0 fw-bold" style="font-size: .7rem;">Justin Gutierrez</h5>
+                            </div>
+                            <div class="media-body">
+                                <p style="font-size: .6rem;">
+                                    Supp Bitches! We out tonight drinking booze and shit at Sargine's Tarburn!! :>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <div class="card col-sm-2 d-none d-md-block">
+            <div class="card-body">
+                <h4 class="card-title" style="font-size: 1rem;">Friends</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item " style="font-size: .6rem;">Friend 2</li>
+                    <li class="list-group-item " style="font-size: .6rem;">Friend 1</li>
+                    <li class="list-group-item " style="font-size: .6rem;">Friend 3</li>
                 </ul>
             </div>
         </div>
-    </nav>
-    <!-- Navbar -->
-</body>
-
-</html>
+    </div>
+</div>

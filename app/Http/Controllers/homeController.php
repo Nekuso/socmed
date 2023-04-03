@@ -11,6 +11,11 @@ class homeController extends Controller
 
     public function index()
     {
+        return view('home');
+    }
+
+    public function users_list()
+    {
         $user_list = User::orderby('id', 'asc')->orderby('lname', 'asc')->orderby('fname', 'asc')->orderby('mname', 'asc')->get();
         return view('users_list', compact('user_list'));
     }

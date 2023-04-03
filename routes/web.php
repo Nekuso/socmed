@@ -22,6 +22,7 @@ Route::post('/signIn', [authController::class, 'signIn'])->name('signIn');
 Route::group(['middleware' => ['Authcheck']], function () {
     Route::get('/', [authController::class, 'index'])->name('login');
     Route::get('/home', [homeController::class, 'index'])->name('home');
+    Route::get('/users_list', [homeController::class, 'users_list'])->name('users_list');
     Route::get('/logout', [homeController::class, 'logout'])->name('logout');
     Route::get('/update_user_view/{id}', [homeController::class, 'updateView'])->name('userView');
     Route::match(array('GET', 'POST'), '/update_user/{id}', [homeController::class, 'updateUser'])->name('updateUser');
