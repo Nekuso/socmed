@@ -60,8 +60,9 @@
 
     @yield('content')
 
-
-    <script src="{{asset('assets/js/main.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('scripts/main.js') }}"></script>
+    <script src="https://unpkg.com/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

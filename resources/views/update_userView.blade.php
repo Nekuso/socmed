@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title, Update User')
+@section('content')
 
 <div class="container d-flex justify-content-center flex-wrap" style="margin-top: 6rem; gap: 1rem;">
     <div class="row justify-content-center">
@@ -65,3 +65,4 @@
         </div>
     </div>
 </div>
+@endsection

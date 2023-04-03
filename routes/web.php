@@ -29,4 +29,7 @@ Route::group(['middleware' => ['Authcheck']], function () {
 
     Route::match(array('GET', 'POST'), '/update_user/{id}', [homeController::class, 'updateUser'])->name('updateUser');
     Route::post('/delete/{id}', [homeController::class, 'delete']);
+
+    Route::get('/insertPost/{post}', [homeController::class, 'insertPost']);
+    Route::post('/deletePost/{id}', [homeController::class, 'deletePost']);
 });
