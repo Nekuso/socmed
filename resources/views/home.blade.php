@@ -64,7 +64,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item " style="font-size: .6rem;">Elon Musk</li>
                         <li class="list-group-item " style="font-size: .6rem;">Mark Zuckerberg</li>
-                        <li class="list-group-item " style="font-size: .6rem;">Nr. Beast</li>
+                        <li class="list-group-item " style="font-size: .6rem;">Mr. Beast</li>
                     </ul>
                 </div>
             </div>

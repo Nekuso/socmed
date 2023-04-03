@@ -35,7 +35,7 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top bg-dark navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Nekuso</a>
+            <a class="navbar-brand" href="{{route('home')}}">Nekuso</a>
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
