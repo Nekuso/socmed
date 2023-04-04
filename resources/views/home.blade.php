@@ -36,11 +36,11 @@
                     <div class="d-flex flex-column gap-3" id="postHere">
 
                         @foreach($posts as $post)
-                        <div class="card p-4 bg-light" id="{{$post->id}}">
+                        <div class="card p-4 bg-light hoverableCard" id="{{$post->id}}">
                             <div class="media d-flex flex-column gap-4">
                                 <div class="d-flex align-items-start justify-content-between gap-2">
                                     <div class="d-flex align-items-center gap-2">
-                                        <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/c2/1e/5b/c21e5b0f13b015143dac6a18e8ddd899.jpg" alt="Profile Image" width="50">
+                                        <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/90/20/2a/90202add028b5fc5fd0474c613b95403.jpg" alt="Profile Image" width="50">
                                         <div style="display: flex; flex-direction: column; gap: .4rem;">
                                             <h5 class="mt-0 fw-bold" style="font-size: .7rem; margin-bottom: 0; margin-block-start: 0; margin-block-end: 0; margin-inline-start: 0px; margin-inline-end: 0px;">{{$post->fname." ".$post->lname}}</h5>
                                             <p style="font-size: .5rem; margin-bottom: 0; margin-block-start: 0; margin-block-end: 0; margin-inline-start: 0px; margin-inline-end: 0px;">{{ \Carbon\Carbon::parse($post->created_at)->format('M d, Y')}}</p>

@@ -79,7 +79,15 @@ class homeController extends Controller
             'user' => $userId,
             'created_at' => now(),
         ]);
-        return view('new_post', compact('text'));
+
+        $current_post = DB::table('posts')
+            ->join('users', 'posts.user', '=', 'users.id')
+            ->select('posts.*', 'users.fname', 'users.mname', 'users.lname')
+            ->where('posts.user', $userId)
+            ->orderBy('posts.created_at', 'desc')
+            ->first();
+
+        return view('new_post', compact('current_post'));
     }
 
     public function deletePost($id)

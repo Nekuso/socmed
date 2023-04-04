@@ -4,3 +4,13 @@
     font-family: 'Press Start 2P', cursive;
     /* font-family: 'Montserrat', sans-serif; */
  }
+
+ .hoverableCard {
+   transition: all 0.3s cubic-bezier(0.47, 0, 0.37, 1.47);
+ }
+
+.hoverableCard:hover {
+   box-shadow: black 10px 10px 0px;
+   transform: translate(-5px, -5px);
+   border: 1px solid black;
+}
