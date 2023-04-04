@@ -6,7 +6,7 @@
         <div class="col-md-3 d-none d-md-block"> <!-- Profile Sidebar -->
             <div class="card">
                 <div class="card-body d-flex flex-column gap-3">
-                    <div class="d-flex align-items-center" style="align-items: center; gap: .5rem;"> <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/c2/1e/5b/c21e5b0f13b015143dac6a18e8ddd899.jpg" alt="Profile Image" width="30">
+                    <div class="d-flex align-items-center" style="align-items: center; gap: .5rem;"> <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/e4/06/5e/e4065e894d2573adffbd2194895fc653.jpg" alt="Profile Image" width="30">
                         <h4 class="card-title m-0 text-wrap" style="font-size: .6rem;">{{$current_user->fname." ". $current_user->lname}}</h4>
                     </div>
                     <p class="card-text" style="font-size: .5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus massa ut lorem bibendum, ac pharetra nibh ultricies. Duis quis ante lectus.</p>
@@ -40,7 +40,7 @@
                             <div class="media d-flex flex-column gap-4">
                                 <div class="d-flex align-items-start justify-content-between gap-2">
                                     <div class="d-flex align-items-center gap-2">
-                                        <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/90/20/2a/90202add028b5fc5fd0474c613b95403.jpg" alt="Profile Image" width="50">
+                                        <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/e4/06/5e/e4065e894d2573adffbd2194895fc653.jpg" alt="Profile Image" width="50">
                                         <div style="display: flex; flex-direction: column; gap: .4rem;">
                                             <h5 class="mt-0 fw-bold" style="font-size: .7rem; margin-bottom: 0; margin-block-start: 0; margin-block-end: 0; margin-inline-start: 0px; margin-inline-end: 0px;">{{$post->fname." ".$post->lname}}</h5>
                                             <p style="font-size: .5rem; margin-bottom: 0; margin-block-start: 0; margin-block-end: 0; margin-inline-start: 0px; margin-inline-end: 0px;">{{ \Carbon\Carbon::parse($post->created_at)->format('M d, Y')}}</p>

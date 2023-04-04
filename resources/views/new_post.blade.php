@@ -2,7 +2,7 @@
     <div class="media d-flex flex-column gap-4">
         <div class="d-flex align-items-start justify-content-between gap-2">
             <div class="d-flex align-items-center gap-2">
-                <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/90/20/2a/90202add028b5fc5fd0474c613b95403.jpg" alt="Profile Image" width="50">
+                <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/e4/06/5e/e4065e894d2573adffbd2194895fc653.jpg" alt="Profile Image" width="50">
                 <div style="display: flex; flex-direction: column; gap: .4rem;">
                     <h5 class="mt-0 fw-bold" style="font-size: .7rem; margin-bottom: 0; margin-block-start: 0; margin-block-end: 0; margin-inline-start: 0px; margin-inline-end: 0px;">{{$current_post->fname." ".$current_post->lname}}</h5>
                     <p style="font-size: .5rem; margin-bottom: 0; margin-block-start: 0; margin-block-end: 0; margin-inline-start: 0px; margin-inline-end: 0px;">{{ \Carbon\Carbon::parse($current_post->created_at)->format('M d, Y')}}</p>
