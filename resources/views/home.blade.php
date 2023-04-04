@@ -3,17 +3,29 @@
 
 <div class="container-fluid mt-5 pt-4 pb-4" style="width: 90%;">
     <div class="row justify-content-center">
-        <div class="col-md-3 d-none d-md-block"> <!-- Profile Sidebar -->
-            <div class="card">
+        <div class="col-md-3 d-none d-md-block">
+            <div class="card mb-2">
                 <div class="card-body d-flex flex-column gap-3">
                     <div class="d-flex align-items-center" style="align-items: center; gap: .5rem;"> <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/e4/06/5e/e4065e894d2573adffbd2194895fc653.jpg" alt="Profile Image" width="30">
                         <h4 class="card-title m-0 text-wrap" style="font-size: .6rem;">{{$current_user->fname." ". $current_user->lname}}</h4>
                     </div>
-                    <p class="card-text" style="font-size: .5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus massa ut lorem bibendum, ac pharetra nibh ultricies. Duis quis ante lectus.</p>
+                    <div>
+                        <p class="card-text" style="font-size: .5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus massa ut lorem bibendum, ac pharetra nibh ultricies. Duis quis ante lectus.</p>
+                        <hr>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title bg-dark rounded-5 text-white m-0" style="padding: .5rem 1rem; font-size: .5rem;">Friends</h4>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item " style="font-size: .6rem;">Elon Musk</li>
+                        <li class="list-group-item " style="font-size: .6rem;">Mark Zuckerberg</li>
+                        <li class="list-group-item " style="font-size: .6rem;">Mr. Beast</li>
+                    </ul>
                 </div>
             </div>
         </div>
         <div class="col-md-5 col-sm-12">
+
             <!-- Post Input -->
             <div class="card">
                 <div class="card-body">
@@ -27,6 +39,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Posts -->
             <div class="card mt-3">
                 <div class="card-body">
@@ -52,6 +65,7 @@
                                         <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="{{route('postView', $post->id)}}">EDIT</a></li>
                                             <li><button class="dropdown-item" onclick="handleDeletePost('{{$post->id}}')">DELETE</button></li>
                                         </ul>
                                     </div>
@@ -71,16 +85,24 @@
             </div>
         </div>
 
+        <!-- Discover Friends -->
         <div class="col-md-3 d-none d-md-block">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex">
-                        <h4 class="card-title bg-dark rounded-5 text-white" style="padding: .5rem 1rem; font-size: .7rem;">Friends</h4>
+                        <h4 class="card-title bg-dark rounded-5 text-white" style="padding: .5rem 1rem; font-size: .5rem;">Discover Friends</h4>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item " style="font-size: .6rem;">Elon Musk</li>
-                        <li class="list-group-item " style="font-size: .6rem;">Mark Zuckerberg</li>
-                        <li class="list-group-item " style="font-size: .6rem;">Mr. Beast</li>
+                        @foreach($user_list as $user)
+                        <li class="list-group-item " style="font-size: .6rem; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: .6rem;">
+                                {{$user->fname." ".$user->lname}}
+                            </span>
+                            <button class="btn btn-primary" style="font-size: .5rem;">
+                                <i class="fas fa-user-plus"></i>
+                            </button>
+                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

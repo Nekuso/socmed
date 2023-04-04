@@ -80,13 +80,17 @@ async function handleDelete(id) {
         setTimeout(() => {
             element.remove();
         }, 500);
+        redirect("/");
     } catch (error) {
         alert(error);
     }
 }
 
 async function handleDeletePost(id) {
-    confirm("Are you sure you want to delete this?");
+    const confirmed = confirm("Are you sure you want to delete this?");
+    if (!confirmed) {
+        return;
+    }
     try {
         const response = await fetch(`/deletePost/${id}`, {
             method: "POST",

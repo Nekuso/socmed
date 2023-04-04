@@ -13,6 +13,7 @@
                 <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="{{route('postView', $current_post->id)}}">EDIT</a></li>
                     <li><button class="dropdown-item" onclick="handleDeletePost('{{$current_post->id}}')">DELETE</button></li>
                 </ul>
             </div>
