@@ -234,6 +234,10 @@ class homeController extends Controller
             ->get();
 
         $mutual_friends_count = 0;
+        $is_friend = DB::table('friends')
+            ->where('acount_id', $current_user->id)
+            ->where('friend_id', $user->id)
+            ->exists();
         foreach ($friends as $friend) {
             $is_mutual = DB::table('friends')
                 ->where('acount_id', $current_user->id)
@@ -247,6 +251,6 @@ class homeController extends Controller
             }
         }
 
-        return view('profile', compact('user', 'posts', 'current_user', 'friends', 'mutual_friends_count'));
+        return view('profile', compact('user', 'posts', 'current_user', 'friends', 'mutual_friends_count', 'is_friend'));
     }
 }

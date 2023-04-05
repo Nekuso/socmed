@@ -6,18 +6,37 @@
         <div class="col-md-3 d-none d-md-block">
             <div class="card mb-2">
                 <div class="card-body d-flex flex-column gap-3">
-                    <div class="d-flex align-items-center" style="align-items: center; gap: .5rem;">
-                        <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/e4/06/5e/e4065e894d2573adffbd2194895fc653.jpg" alt="Profile Image" width="30">
-                        <h4 class="card-title m-0 text-wrap" style="font-size: .6rem;">{{$user->fname." ". $user->lname}}</h4>
+                    <div class="d-flex align-items-center" style="align-items: center; justify-content: space-between; gap: .5rem;">
+                        <div class="d-flex align-items-center" style="align-items: center; gap: .5rem;">
+                            <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/e4/06/5e/e4065e894d2573adffbd2194895fc653.jpg" alt="Profile Image" width="30">
+                            <h4 class="card-title m-0 text-wrap" style="font-size: .7rem;">{{$user->fname." ". $user->lname}}</h4>
+                        </div>
+
+                        @if ($user->id != $current_user->id)
+                        @if ($is_friend)
+                        <form action="{{ route('unfriend', $user->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-danger" style="font-size: .5rem;">
+                                <i class="fas fa-user-minus"></i>
+                            </button>
+                        </form>
+                        @else
+                        <form action="{{ route('add.friend', $user->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary" style="font-size: .5rem;">
+                                <i class="fas fa-user-plus"></i>
+                            </button>
+                        </form>
+                        @endif
+                        @endif
                     </div>
                     <div>
-                        <p class="card-text" style="font-size: .5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus massa ut lorem bibendum, ac pharetra nibh ultricies. Duis quis ante lectus.</p>
                         <hr>
                     </div>
                     <div class="d-flex align-items-center justify-content-between" style="align-items: center;">
                         <h4 class=" card-title bg-dark rounded-5 text-white m-0" style="padding: .5rem 1rem; font-size: .5rem;">Friends</h4>
                         @if ($user->id != $current_user->id)
-                        <p style="margin: 0; font-size: .5rem;">({{ $mutual_friends_count }} mutual)</p>
+                        <p style="margin: 0; font-size: .5rem;">({{ $mutual_friends_count }} mutual friends)</p>
                         @endif
                     </div>
                     <ul class="list-group list-group-flush">

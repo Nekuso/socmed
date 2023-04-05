@@ -5,14 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-3 d-none d-md-block">
             <div class="card mb-2">
-                <div class="card-body d-flex flex-column gap-3">
+                <div class="card-body d-flex flex-column gap-1">
                     <div class="d-flex align-items-center" style="align-items: center; gap: .5rem;"> <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/e4/06/5e/e4065e894d2573adffbd2194895fc653.jpg" alt="Profile Image" width="30">
-                        <a href="{{ route('profile', $current_user->id) }}" class="card-title m-0 text-wrap" style="text-decoration:none; color:black; font-size: .6rem;">{{$current_user->fname." ". $current_user->lname}}</a>
+                        <a href="{{ route('profile', $current_user->id) }}" class="card-title m-0 text-wrap" style="text-decoration:none; color:black; font-size: .7rem;">{{$current_user->fname." ". $current_user->lname}}</a>
                     </div>
-                    <div>
-                        <p class="card-text" style="font-size: .5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus massa ut lorem bibendum, ac pharetra nibh ultricies. Duis quis ante lectus.</p>
                         <hr>
-                    </div>
                     <div class="d-flex align-items-center">
                         <h4 class="card-title bg-dark rounded-5 text-white m-0" style="padding: .5rem 1rem; font-size: .5rem;">Friends</h4>
                     </div>
