@@ -25,14 +25,17 @@ Route::group(['middleware' => ['Authcheck']], function () {
     Route::get('/users_list', [homeController::class, 'users_list'])->name('users_list');
     Route::get('/logout', [homeController::class, 'logout'])->name('logout');
 
-    Route::get('/update_user_view/{id}', [homeController::class, 'updateView'])->name('userView');
-    Route::get('/edit_post_view/{id}', [homeController::class, 'editPostView'])->name('postView');
 
+    Route::get('/update_user_view/{id}', [homeController::class, 'updateView'])->name('userView');
     Route::match(array('GET', 'POST'), '/update_user/{id}', [homeController::class, 'updateUser'])->name('updateUser');
     Route::post('/delete/{id}', [homeController::class, 'delete']);
-    
+
     Route::match(array('GET', 'POST'), '/update_post/{id}', [homeController::class, 'updatePost'])->name('updatePost');
+    Route::get('/edit_post_view/{id}', [homeController::class, 'editPostView'])->name('postView');
     Route::get('/insertPost/{post}', [homeController::class, 'insertPost']);
     Route::post('editPost/{id}', [homeController::class, 'editPost']);
     Route::post('/deletePost/{id}', [homeController::class, 'deletePost']);
+
+    Route::post('/add_friend/{id}', [homeController::class, 'addFriend'])->name('add.friend');
+    Route::post('/unfriend/{id}', [homeController::class, 'unfriend'])->name('unfriend');
 });

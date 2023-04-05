@@ -14,15 +14,54 @@ class homeController extends Controller
     {
         $user_id = session()->get('LoggedUser');
         $current_user = User::where('id', $user_id)->first();
-        $user_list = User::orderby('id', 'asc')->orderby('lname', 'asc')->orderby('fname', 'asc')->orderby('mname', 'asc')->get();
+
+        // Get the list of users who are not friends yet and don't include the current user
+        $user_list = User::whereNotIn('id', function ($query) use ($user_id) {
+            $query->select('friend_id')
+                ->from('friends')
+                ->where('acount_id', $user_id);
+        })
+            ->where('id', '<>', $user_id)
+            ->orderBy('lname', 'asc')
+            ->orderBy('fname', 'asc')
+            ->orderBy('mname', 'asc')
+            ->get();
+
+        $friends = DB::table('friends')
+            ->join('users', 'friends.friend_id', '=', 'users.id')
+            ->select('users.id', 'users.fname', 'users.lname')
+            ->where('friends.acount_id', $user_id)
+            ->orderBy('users.lname', 'asc')
+            ->orderBy('users.fname', 'asc')
+            ->orderBy('users.mname', 'asc')
+            ->get();
+
+        $friendsPostRef = DB::table('friends')
+            ->join('users', 'friends.friend_id', '=', 'users.id')
+            ->select('users.id', 'users.fname', 'users.lname')
+            ->where('friends.acount_id', $user_id)
+            ->pluck('id')
+            ->toArray();
 
         $posts = DB::table('posts')
             ->join('users', 'posts.user', '=', 'users.id')
             ->select('posts.*', 'users.fname', 'users.mname', 'users.lname')
+            ->whereIn('posts.user', array_merge([$user_id], $friendsPostRef))
             ->orderBy('posts.created_at', 'desc')
             ->get();
 
-        return view('home', compact('current_user', 'posts', 'user_list'));
+        $notFriendList = User::whereNotIn('id', function ($query) use ($user_id) {
+            $query->select('friend_id')
+                ->from('friends')
+                ->where('acount_id', $user_id);
+        })
+            ->where('id', '<>', $user_id)
+            ->orderBy('lname', 'asc')
+            ->orderBy('fname', 'asc')
+            ->orderBy('mname', 'asc')
+            ->get();
+
+        return view('home', compact('current_user', 'posts', 'user_list', 'friends', 'notFriendList'));
     }
 
     // Shows all the users
@@ -143,6 +182,45 @@ class homeController extends Controller
             return back()->with('success', 'Post updated successfully');
         } else {
             return back()->with('fail', 'Something went wrong, please try again');
+        }
+    }
+
+    // Add friend's a user
+    public function addFriend($id)
+    {
+        $user_id = session()->get('LoggedUser');
+        $friendship = DB::table('friends')
+            ->where('acount_id', $user_id)
+            ->where('friend_id', $id)
+            ->first();
+
+        if (!$friendship) {
+            DB::table('friends')->insert([
+                'acount_id' => $user_id,
+                'friend_id' => $id,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            return redirect()->back()->with('success', 'Friend request sent!');
+        } else {
+            return redirect()->back()->with('fail', 'Friend request already sent!');
+        }
+    }
+
+    // Unfriend's a user
+    public function unfriend($id)
+    {
+        $user_id = session()->get('LoggedUser');
+        $delete = DB::table('friends')
+            ->where('acount_id', $user_id)
+            ->where('friend_id', $id)
+            ->delete();
+
+        if ($delete) {
+            return redirect()->back()->with('success', 'Friend removed!');
+        } else {
+            return redirect()->back()->with('fail', 'Something went wrong, please try again');
         }
     }
 }

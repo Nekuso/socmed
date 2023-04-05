@@ -17,9 +17,19 @@
                         <h4 class="card-title bg-dark rounded-5 text-white m-0" style="padding: .5rem 1rem; font-size: .5rem;">Friends</h4>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item " style="font-size: .6rem;">Elon Musk</li>
-                        <li class="list-group-item " style="font-size: .6rem;">Mark Zuckerberg</li>
-                        <li class="list-group-item " style="font-size: .6rem;">Mr. Beast</li>
+                        @foreach($friends as $friend)
+                        <li class="list-group-item" style="font-size: .6rem; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: .6rem;">
+                                {{$friend->fname." ".$friend->lname}}
+                            </span>
+                            <form action="{{ route('unfriend', $friend->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger" style="font-size: .5rem;">
+                                    <i class="fas fa-user-minus"></i>
+                                </button>
+                            </form>
+                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -93,14 +103,17 @@
                         <h4 class="card-title bg-dark rounded-5 text-white" style="padding: .5rem 1rem; font-size: .5rem;">Discover Friends</h4>
                     </div>
                     <ul class="list-group list-group-flush">
-                        @foreach($user_list as $user)
-                        <li class="list-group-item " style="font-size: .6rem; display: flex; justify-content: space-between; align-items: center;">
+                        @foreach($notFriendList as $user)
+                        <li class="list-group-item" style="font-size: .6rem; display: flex; justify-content: space-between; align-items: center;">
                             <span style="font-size: .6rem;">
                                 {{$user->fname." ".$user->lname}}
                             </span>
-                            <button class="btn btn-primary" style="font-size: .5rem;">
-                                <i class="fas fa-user-plus"></i>
-                            </button>
+                            <form action="{{ route('add.friend', $user->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-primary" style="font-size: .5rem;">
+                                    <i class="fas fa-user-plus"></i>
+                                </button>
+                            </form>
                         </li>
                         @endforeach
                     </ul>

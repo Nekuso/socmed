@@ -3,7 +3,7 @@
 
 
 <div class="container d-flex justify-content-center flex-wrap" style="margin-top: 6rem; gap: 1rem;">
-    <div class="title" style="width: 100%; display: flex;">
+    <div class="card-title" style="width: 100%; display: flex;">
         <h2 class="text-left" style="font-size: .8rem; background-color: black; color: white; border-radius: 10px; padding: .6rem .7rem; width: auto;">Users List</h2>
     </div>
     <div class="container text-center ">
@@ -23,7 +23,7 @@
                     @foreach($user_list as $user)
                     <tr id="{{$user->id}}">
                         <td>{{$user->id}}</td>
-                        <td>{{$user->fname}}</td>
+                        <td>{{$user->fname}}</td> 
                         <td>{{$user->mname}}</td>
                         <td>{{$user->lname}}</td>
                         <td>{{$user->email}}</td>
