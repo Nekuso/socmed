@@ -166,10 +166,11 @@ class homeController extends Controller
             'post' => $request->post,
         ]);
 
+
         if ($updated) {
             return back()->with('success', 'Post updated successfully');
         } else {
-            return back()->with('fail', 'Something went wrong, please try again');
+            return back()->with('fail', 'Something went wrong, please update your text or try again');
         }
     }
 

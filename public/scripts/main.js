@@ -8,8 +8,12 @@ textArea.addEventListener("keyup", (e) => {
 });
 
 const handleCreatePost = () => {
+    if (textArea.value == "") {
+        alert("Please enter some text");
+        return;
+    }
     fetch("/insertPost/" + textArea.value, {
-        method: "GET",
+        method: "POST",
         headers: {
             "Content-Type": "text/html",
             "X-Requested-With": "XMLHttpRequest",

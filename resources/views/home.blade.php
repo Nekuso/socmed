@@ -9,7 +9,7 @@
                     <div class="d-flex align-items-center" style="align-items: center; gap: .5rem;"> <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/e4/06/5e/e4065e894d2573adffbd2194895fc653.jpg" alt="Profile Image" width="30">
                         <a href="{{ route('profile', $current_user->id) }}" class="card-title m-0 text-wrap" style="text-decoration:none; color:black; font-size: .7rem;">{{$current_user->fname." ". $current_user->lname}}</a>
                     </div>
-                        <hr>
+                    <hr>
                     <div class="d-flex align-items-center">
                         <h4 class="card-title bg-dark rounded-5 text-white m-0" style="padding: .5rem 1rem; font-size: .5rem;">Friends</h4>
                     </div>
@@ -38,7 +38,7 @@
                 <div class="card-body">
                     <div>
                         <div class="form-group mb-3">
-                            <textarea name="post" onchange="handleInputChange()" id="user_text_input" class="form-control p-3" rows="3" placeholder="What's on your mind?" style="font-size: .7rem; min-height: 120px; max-height: 120px;" aria-label="With textarea"></textarea>
+                            <textarea required name="post" onchange="handleInputChange()" id="user_text_input" class="form-control p-3" rows="3" placeholder="What's on your mind?" style="font-size: .7rem; min-height: 120px; max-height: 120px;" aria-label="With textarea"></textarea>
                         </div>
                         <div class="d-flex justify-content-end">
                             <button onclick="handleCreatePost()" class="btn btn-primary w-auto" style="font-size: .7rem;">Post</button>
