@@ -7,7 +7,7 @@
             <div class="card mb-2">
                 <div class="card-body d-flex flex-column gap-3">
                     <div class="d-flex align-items-center" style="align-items: center; gap: .5rem;"> <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/e4/06/5e/e4065e894d2573adffbd2194895fc653.jpg" alt="Profile Image" width="30">
-                        <h4 class="card-title m-0 text-wrap" style="font-size: .6rem;">{{$current_user->fname." ". $current_user->lname}}</h4>
+                        <a href="{{ route('profile', $current_user->id) }}" class="card-title m-0 text-wrap" style="text-decoration:none; color:black; font-size: .6rem;">{{$current_user->fname." ". $current_user->lname}}</a>
                     </div>
                     <div>
                         <p class="card-text" style="font-size: .5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus massa ut lorem bibendum, ac pharetra nibh ultricies. Duis quis ante lectus.</p>
