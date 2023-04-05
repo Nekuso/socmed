@@ -38,9 +38,9 @@
         <div class="container"> <a class="navbar-brand" href="{{route('home')}}">Nekuso</a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"> <a class="nav-link mx-2" href="{{route('home')}}" style="font-size: .7rem; display: flex; align-items: center;"><i class="fas fa-plus-circle pe-2"></i>Post</a> </li>
-                    <li class="nav-item"> <a class="nav-link mx-2" href="#!" style="font-size: .7rem; display: flex; align-items: center;"><i class="fas fa-bell pe-2"></i>Alerts</a> </li>
-                    <li class="nav-item"> <a class="nav-link mx-2" href="{{route('users_list')}}" style="font-size: .7rem; display: flex; align-items: center;"><i class="fas fa-user pe-2"></i>Users</a> </li>
+                    <li class="nav-item"> <a class="nav-link mx-2" href="{{route('home')}}" style=" margin: 0; font-size: .7rem; display: flex; align-items: center; margin: 0; "><i class="fas fa-plus-circle pe-2"></i>Post</a> </li>
+                    <li class="nav-item"> <a class="nav-link mx-2" href="#!" style=" margin: 0; font-size: .7rem; display: flex; align-items: center;"><i class="fas fa-bell pe-2"></i>Alerts</a> </li>
+                    <li class="nav-item"> <a class="nav-link mx-2" href="{{route('users_list')}}" style=" margin: 0; font-size: .7rem; display: flex; align-items: center;"><i class="fas fa-user pe-2"></i> Users</a> </li>
                     <li class="nav-item ms-3"> <a class="btn btn-light btn-rounded" href="{{route('logout')}}" style="font-family: 'Press Start 2P', cursive; font-size: .7rem;">Sign out</a> </li>
                 </ul>
             </div>
