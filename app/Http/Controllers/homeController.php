@@ -15,18 +15,6 @@ class homeController extends Controller
         $user_id = session()->get('LoggedUser');
         $current_user = User::where('id', $user_id)->first();
 
-        // Get the list of users who are not friends yet and don't include the current user
-        $user_list = User::whereNotIn('id', function ($query) use ($user_id) {
-            $query->select('friend_id')
-                ->from('friends')
-                ->where('acount_id', $user_id);
-        })
-            ->where('id', '<>', $user_id)
-            ->orderBy('lname', 'asc')
-            ->orderBy('fname', 'asc')
-            ->orderBy('mname', 'asc')
-            ->get();
-
         $friends = DB::table('friends')
             ->join('users', 'friends.friend_id', '=', 'users.id')
             ->select('users.id', 'users.fname', 'users.lname')
@@ -61,7 +49,7 @@ class homeController extends Controller
             ->orderBy('mname', 'asc')
             ->get();
 
-        return view('home', compact('current_user', 'posts', 'user_list', 'friends', 'notFriendList'));
+        return view('home', compact('current_user', 'posts', 'friends', 'notFriendList'));
     }
 
     // Shows all the users

@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label style="font-size: .7rem; font-weight:800;" for="password">Password</label>
-                            <input style="font-size: .6rem;" type="password" id="password" name="password" placeholder="Password" class="form-control form-control-sm" value="{{ $user_info->password }}">
+                            <input style="font-size: .6rem;" type="password" id="password" name="password" placeholder="Password" class="form-control form-control-sm">
                         </div>
                         <div class="form-group">
                             <label style="font-size: .7rem; font-weight:800;" for="password_confirmation">Verify Password</label>
