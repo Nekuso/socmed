@@ -25,6 +25,8 @@ Route::group(['middleware' => ['Authcheck']], function () {
     Route::get('/users_list', [homeController::class, 'users_list'])->name('users_list');
     Route::get('/logout', [homeController::class, 'logout'])->name('logout');
 
+    Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('profile');
+
 
     Route::get('/update_user_view/{id}', [homeController::class, 'updateView'])->name('userView');
     Route::match(array('GET', 'POST'), '/update_user/{id}', [homeController::class, 'updateUser'])->name('updateUser');

@@ -211,4 +211,27 @@ class homeController extends Controller
             return redirect()->back()->with('fail', 'Something went wrong, please try again');
         }
     }
+
+    public function profile($id)
+    {
+        $user_id = session()->get('LoggedUser');
+        $current_user = User::where('id', $user_id)->first();
+
+        $user = User::findOrFail($id);
+
+        $posts = DB::table('posts')
+            ->join('users', 'posts.user', '=', 'users.id')
+            ->select('posts.*', 'users.fname', 'users.mname', 'users.lname')
+            ->where('posts.user', $id)
+            ->orderBy('posts.created_at', 'desc')
+            ->get();
+
+        $friends = DB::table('friends')
+            ->join('users', 'friends.friend_id', '=', 'users.id')
+            ->select('users.*')
+            ->where('friends.acount_id', $id)
+            ->get();
+
+        return view('profile', compact('user', 'posts', 'current_user', 'friends'));
+    }
 }
