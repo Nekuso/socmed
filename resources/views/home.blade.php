@@ -105,9 +105,9 @@
                     <ul class="list-group list-group-flush">
                         @foreach($notFriendList as $user)
                         <li class="list-group-item" style="font-size: .6rem; display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: .6rem;">
+                            <a href="{{ route('profile', $user->id) }}" style="text-decoration:none; color:black; font-size: .6rem;">
                                 {{$user->fname." ".$user->lname}}
-                            </span>
+                            </a>
                             <form action="{{ route('add.friend', $user->id) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-primary" style="font-size: .5rem;">

@@ -212,6 +212,7 @@ class homeController extends Controller
         }
     }
 
+    // View's a user's profile
     public function profile($id)
     {
         $user_id = session()->get('LoggedUser');
@@ -232,6 +233,20 @@ class homeController extends Controller
             ->where('friends.acount_id', $id)
             ->get();
 
-        return view('profile', compact('user', 'posts', 'current_user', 'friends'));
+        $mutual_friends_count = 0;
+        foreach ($friends as $friend) {
+            $is_mutual = DB::table('friends')
+                ->where('acount_id', $current_user->id)
+                ->where('friend_id', $friend->id)
+                ->exists();
+            if ($is_mutual) {
+                $mutual_friends_count++;
+                $friend->is_mutual = true;
+            } else {
+                $friend->is_mutual = false;
+            }
+        }
+
+        return view('profile', compact('user', 'posts', 'current_user', 'friends', 'mutual_friends_count'));
     }
 }

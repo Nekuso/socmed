@@ -14,8 +14,11 @@
                         <p class="card-text" style="font-size: .5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus massa ut lorem bibendum, ac pharetra nibh ultricies. Duis quis ante lectus.</p>
                         <hr>
                     </div>
-                    <div class="d-flex align-items-center">
-                        <h4 class="card-title bg-dark rounded-5 text-white m-0" style="padding: .5rem 1rem; font-size: .5rem;">Friends</h4>
+                    <div class="d-flex align-items-center justify-content-between" style="align-items: center;">
+                        <h4 class=" card-title bg-dark rounded-5 text-white m-0" style="padding: .5rem 1rem; font-size: .5rem;">Friends</h4>
+                        @if ($user->id != $current_user->id)
+                        <p style="margin: 0; font-size: .5rem;">({{ $mutual_friends_count }} mutual)</p>
+                        @endif
                     </div>
                     <ul class="list-group list-group-flush">
                         @foreach($friends as $friend)
@@ -30,6 +33,8 @@
                                     <i class="fas fa-user-minus"></i>
                                 </button>
                             </form>
+                            @elseif ($friend->is_mutual)
+                            <p style="margin: 0; font-size: .5rem;">(mutual)</p>
                             @endif
                         </li>
                         @endforeach
@@ -64,6 +69,7 @@
                     </div>
                     <div class="d-flex flex-column gap-3" id="postHere">
 
+                        @if($posts->count() >0)
                         @foreach($posts as $post)
                         <div class="card p-4 bg-light hoverableCard" id="{{$post->id}}">
                             <div class="media d-flex flex-column gap-4">
@@ -72,7 +78,7 @@
                                         <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/e4/06/5e/e4065e894d2573adffbd2194895fc653.jpg" alt="Profile Image" width="50">
                                         <div style="display: flex; flex-direction: column; gap: .4rem;">
                                             <a href="{{ route('profile', $post->user) }}" class="mt-0 fw-bold" style="text-decoration:none; color:black; font-size: .7rem; margin-bottom: 0; margin-block-start: 0; margin-block-end: 0; margin-inline-start: 0px; margin-inline-end:
-0px;">{{$post->fname." ".$post->lname}}</a>
+    0px;">{{$post->fname." ".$post->lname}}</a>
                                             <p style="font-size: .5rem; margin-bottom: 0; margin-block-start: 0; margin-block-end: 0; margin-inline-start: 0px; margin-inline-end: 0px;">{{ \Carbon\Carbon::parse($post->created_at)->format('M d, Y')}}</p>
                                         </div>
                                     </div>
@@ -97,6 +103,12 @@
                         </div>
                         @endforeach
                         <hr>
+                        @else
+                        <div class="alert alert-info" style="font-size: .6rem; margin-bottom: 0; margin-block-start: 0; margin-block-end: 0; margin-inline-start: 0px; margin-inline-end: 0px;">
+                            No posts yet!
+
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
