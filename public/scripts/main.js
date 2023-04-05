@@ -1,3 +1,5 @@
+const token = document.querySelector('meta[name="csrf-token"]').content;
+
 const textArea = document.getElementById("user_text_input");
 const postHere = document.getElementById("postHere");
 const formSubmit = document.getElementById("formSubmit");

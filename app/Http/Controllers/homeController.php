@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class homeController extends Controller
 {
-
+    // Home Page
     public function index()
     {
         $user_id = session()->get('LoggedUser');
