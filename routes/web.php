@@ -14,7 +14,7 @@ use App\Http\Controllers\homeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// Made with ❤️ by Nekuso
 Route::get('/signup', [authController::class, 'signup'])->name('signup');
 Route::post('/register', [authController::class, 'register'])->name('register');
 Route::post('/signIn', [authController::class, 'signIn'])->name('signIn');

@@ -1,3 +1,5 @@
+<!-- Made with ❤️ by Nekuso -->
+
 <div class="card p-4 bg-light hoverableCard" id="{{$current_post->id}}">
     <div class="media d-flex flex-column gap-4">
         <div class="d-flex align-items-start justify-content-between gap-2">

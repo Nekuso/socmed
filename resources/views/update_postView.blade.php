@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+<!-- Made with ❤️ by Nekuso -->
 
 <div class="container-fluid mt-5 pt-4 pb-4" style="display: flex; width: 90%; justify-content: center; flex-direction: column; align-items: center;">
     @if ($errors->any())

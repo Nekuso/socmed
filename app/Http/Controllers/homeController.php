@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class homeController extends Controller
 {
+    // Made with ❤️ by Nekuso
     // Home Page
     public function index()
     {

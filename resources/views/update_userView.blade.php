@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<!-- Made with ❤️ by Nekuso -->
 
 <div class="container d-flex justify-content-center flex-wrap" style="margin-top: 6rem; gap: 1rem;">
     <div class="row justify-content-center">
