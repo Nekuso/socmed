@@ -11,7 +11,11 @@
                             <img class="mr-3 rounded-circle" src="https://i.pinimg.com/564x/e4/06/5e/e4065e894d2573adffbd2194895fc653.jpg" alt="Profile Image" width="30">
                             <h4 class="card-title m-0 text-wrap" style="font-size: .7rem;">{{$user->fname." ". $user->lname}}</h4>
                         </div>
-
+                        @if ($user->id == $current_user->id)
+                        <a href="{{route('userView', $user->id)}}" class="btn btn-primary" style="font-size: .5rem;">
+                            <i class="fas fa-user-edit"></i>
+                        </a>
+                        @endif
                         @if ($user->id != $current_user->id)
                         @if ($is_friend)
                         <form action="{{ route('unfriend', $user->id) }}" method="POST">

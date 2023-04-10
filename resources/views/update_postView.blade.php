@@ -47,7 +47,7 @@
                     </div>
                     <div class="d-flex justify-content-end gap-2">
                         <a href="{{route('home')}}" class="btn btn-secondary btn-sm mt-3" style="font-size: .7rem;">CANCEL</a>
-                        <button type="submit" class="btn btn-primary btn-sm mt-3" style="font-size: .7rem;">Update</button>
+                        <button type="submit" class="btn btn-primary btn-sm mt-3" style="font-size: .7rem;">UPDATE</button>
                     </div>
                 </form>
             </div>
