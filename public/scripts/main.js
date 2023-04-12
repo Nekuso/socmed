@@ -26,7 +26,19 @@ const handleCreatePost = () => {
         .then((res) => res.text())
         .then((response) => {
             if (response) {
-                postHere.innerHTML = response + postHere.innerHTML;
+                const newPost = document.createElement("div");
+                newPost.innerHTML = response;
+                newPost.classList.add(
+                    "card",
+                    "p-4",
+                    "bg-light",
+                    "hoverableCard",
+                    "post-animation"
+                ); // add animation class
+                postHere.insertBefore(newPost, postHere.firstChild);
+                setTimeout(() => {
+                    newPost.classList.remove("post-animation"); // remove animation class
+                }, 500);
                 textArea.value = "";
             } else {
                 alert("Please enter some text");
