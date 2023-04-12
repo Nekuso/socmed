@@ -22,6 +22,10 @@ Route::post('/signIn', [authController::class, 'signIn'])->name('signIn');
 Route::group(['middleware' => ['Authcheck']], function () {
     Route::get('/', [authController::class, 'index'])->name('login');
     Route::get('/home', [homeController::class, 'index'])->name('home');
+    Route::get('/chats', [HomeController::class, 'chats'])->name('chats');
+    Route::get('/chats/{friend_id}', [HomeController::class, 'chats'])->name('chats.friend');
+    Route::post('/sendChat', [HomeController::class, 'sendChat'])->name('sendChat');
+
     Route::get('/users_list', [homeController::class, 'users_list'])->name('users_list');
     Route::get('/logout', [homeController::class, 'logout'])->name('logout');
 

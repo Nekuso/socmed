@@ -53,6 +53,52 @@ class homeController extends Controller
         return view('home', compact('current_user', 'posts', 'friends', 'notFriendList'));
     }
 
+    public function chats($friend_id = null)
+    {
+        $user_id = session()->get('LoggedUser');
+        $current_user = User::where('id', $user_id)->first();
+
+        $friends = DB::table('friends')
+            ->join('users', 'friends.friend_id', '=', 'users.id')
+            ->select('users.id', 'users.fname', 'users.lname')
+            ->where('friends.acount_id', $user_id)
+            ->orderBy('users.lname', 'asc')
+            ->orderBy('users.fname', 'asc')
+            ->orderBy('users.mname', 'asc')
+            ->get();
+
+        return view('chats', compact('current_user', 'friends'));
+    }
+
+    public function sendChat(Request $request)
+    {
+        $user_id = session()->get('LoggedUser');
+        $friend_id = $request->input('friend_id');
+        $message = $request->input('message');
+
+        DB::table('messages')->insert([
+            'user_id' => $user_id,
+            'friend_id' => $friend_id,
+            'message' => $message,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $chats = DB::table('messages')
+            ->where(function ($query) use ($user_id, $friend_id) {
+                $query->where('user_id', $user_id)
+                    ->where('friend_id', $friend_id);
+            })
+            ->orWhere(function ($query) use ($user_id, $friend_id) {
+                $query->where('user_id', $friend_id)
+                    ->where('friend_id', $user_id);
+            })
+            ->orderBy('created_at', 'asc')
+            ->get();
+
+        return view('new_chat', compact('chats'))->render();
+    }
+
     // Shows all the users
     public function users_list()
     {

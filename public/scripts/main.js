@@ -20,9 +20,7 @@ const handleCreatePost = () => {
         headers: {
             "Content-Type": "text/html",
             "X-Requested-With": "XMLHttpRequest",
-            "X-CSRF-TOKEN": document
-                .querySelector('meta[name="csrf-token"]')
-                .getAttribute("content"),
+            "X-CSRF-TOKEN": token,
         },
     })
         .then((res) => res.text())
@@ -65,16 +63,17 @@ formSubmit.addEventListener("click", (e) => {
 });
 
 async function handleDelete(id) {
-    confirm("Are you sure you want to delete this?");
+    const confirmed = confirm("Are you sure you want to delete this?");
+    if (!confirmed) {
+        return;
+    }
     try {
         const response = await fetch(`/delete/${id}`, {
             method: "POST",
             body: JSON.stringify({ id: parseInt(id) }),
             headers: {
                 "Content-Type": "application/json",
-                "X-CSRF-TOKEN": document
-                    .querySelector('meta[name="csrf-token"]')
-                    .getAttribute("content"),
+                "X-CSRF-TOKEN": token,
             },
         });
 
@@ -104,9 +103,7 @@ async function handleDeletePost(id) {
             body: JSON.stringify({ id: parseInt(id) }),
             headers: {
                 "Content-Type": "application/json",
-                "X-CSRF-TOKEN": document
-                    .querySelector('meta[name="csrf-token"]')
-                    .getAttribute("content"),
+                "X-CSRF-TOKEN": token,
             },
         });
 
@@ -123,3 +120,20 @@ async function handleDeletePost(id) {
         alert(error);
     }
 }
+
+$(document).ready(function () {
+    // When a friend is clicked, load the chat messages for that friend
+    $(".friend").click(function () {
+        var friendId = $(this).data("friend-id");
+        var friendName = $(this).find("a").text();
+        $("#friend_name").text(friendName);
+        fetch("/chats/" + friendId)
+            .then((response) => response.text())
+            .then((data) => {
+                $(".chats").html(data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    });
+});
